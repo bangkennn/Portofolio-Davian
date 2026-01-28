@@ -100,7 +100,7 @@ export interface Achievement {
   category: string;
   credential_url: string | null;
   certificate_url: string;
-  certificate_type: 'image' | 'pdf';
+  certificate_type: 'image';
   tags: string[];
   order: number;
   created_at: string;

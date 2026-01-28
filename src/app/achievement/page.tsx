@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { FaTrophy, FaSearch, FaChevronDown, FaArrowRight, FaTimes } from "react-icons/fa";
-import { Achievement } from "@/lib/supabase";
+import { Achievement as AchievementType } from "@/lib/supabase";
 
 // Filter options
 const filterOptions = [
@@ -14,12 +14,12 @@ const filterOptions = [
 ];
 
 export default function Achievement() {
-  const [achievements, setAchievements] = useState<Achievement[]>([]);
+  const [achievements, setAchievements] = useState<AchievementType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [selectedCertificate, setSelectedCertificate] = useState<Achievement | null>(null);
+  const [selectedCertificate, setSelectedCertificate] = useState<AchievementType | null>(null);
 
   useEffect(() => {
     fetchAchievements();
@@ -44,7 +44,7 @@ export default function Achievement() {
         achievement.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         achievement.issuer.toLowerCase().includes(searchQuery.toLowerCase()) ||
         achievement.tags?.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-      
+
       const matchesFilter =
         selectedFilter === "all" || achievement.category === selectedFilter;
 
@@ -52,7 +52,7 @@ export default function Achievement() {
     });
   }, [achievements, searchQuery, selectedFilter]);
 
-  const handleViewCredential = (achievement: Achievement) => {
+  const handleViewCredential = (achievement: AchievementType) => {
     setSelectedCertificate(achievement);
   };
 
@@ -62,7 +62,7 @@ export default function Achievement() {
 
   return (
     <div className="min-h-screen py-20 max-w-7xl mx-auto px-4">
-      
+
       {/* Header Section */}
       <div className="mb-8">
         <h2 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
@@ -97,9 +97,8 @@ export default function Achievement() {
               {filterOptions.find((opt) => opt.value === selectedFilter)?.label || "Filter achievements..."}
             </span>
             <FaChevronDown
-              className={`text-xs text-zinc-500 transition-transform ${
-                isFilterOpen ? "rotate-180" : ""
-              }`}
+              className={`text-xs text-zinc-500 transition-transform ${isFilterOpen ? "rotate-180" : ""
+                }`}
             />
           </button>
 
@@ -118,11 +117,10 @@ export default function Achievement() {
                       setSelectedFilter(option.value);
                       setIsFilterOpen(false);
                     }}
-                    className={`w-full text-left px-4 py-3 text-sm transition-colors ${
-                      selectedFilter === option.value
-                        ? "bg-emerald-500/10 text-emerald-400"
-                        : "text-zinc-400 hover:bg-zinc-800 hover:text-white"
-                    }`}
+                    className={`w-full text-left px-4 py-3 text-sm transition-colors ${selectedFilter === option.value
+                      ? "bg-emerald-500/10 text-emerald-400"
+                      : "text-zinc-400 hover:bg-zinc-800 hover:text-white"
+                      }`}
                   >
                     {option.label}
                   </button>
@@ -150,22 +148,11 @@ export default function Achievement() {
             {/* Certificate Image */}
             <div className="relative h-64 bg-zinc-950 overflow-hidden">
               {achievement.certificate_url ? (
-                achievement.certificate_type === 'pdf' ? (
-                  <div className="w-full h-full bg-gradient-to-br from-zinc-900 to-zinc-950 flex items-center justify-center">
-                    <div className="text-center p-4">
-                      <div className="w-24 h-24 mx-auto mb-4 bg-red-500/20 rounded-lg flex items-center justify-center border border-red-500/30">
-                        <span className="text-4xl">📄</span>
-                      </div>
-                      <p className="text-zinc-400 text-xs">PDF Certificate</p>
-                    </div>
-                  </div>
-                ) : (
-                  <img
-                    src={achievement.certificate_url}
-                    alt={achievement.title}
-                    className="w-full h-full object-cover"
-                  />
-                )
+                <img
+                  src={achievement.certificate_url}
+                  alt={achievement.title}
+                  className="w-full h-full object-cover"
+                />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-zinc-900 to-zinc-950 flex items-center justify-center">
                   <div className="w-full h-full bg-zinc-800/30 flex items-center justify-center">
@@ -261,23 +248,13 @@ export default function Achievement() {
 
             {/* Certificate Content */}
             <div className="flex-1 overflow-y-auto p-6">
-              {selectedCertificate.certificate_type === 'pdf' ? (
-                <div className="w-full h-full min-h-[500px] flex items-center justify-center bg-zinc-950 rounded-lg">
-                  <iframe
-                    src={selectedCertificate.certificate_url}
-                    className="w-full h-full min-h-[500px] rounded-lg"
-                    title={selectedCertificate.title}
-                  />
-                </div>
-              ) : (
-                <div className="flex items-center justify-center">
-                  <img
-                    src={selectedCertificate.certificate_url}
-                    alt={selectedCertificate.title}
-                    className="max-w-full max-h-[70vh] object-contain rounded-lg"
-                  />
-                </div>
-              )}
+              <div className="flex items-center justify-center">
+                <img
+                  src={selectedCertificate.certificate_url}
+                  alt={selectedCertificate.title}
+                  className="max-w-full max-h-[70vh] object-contain rounded-lg"
+                />
+              </div>
             </div>
 
             {/* Footer dengan info tambahan */}

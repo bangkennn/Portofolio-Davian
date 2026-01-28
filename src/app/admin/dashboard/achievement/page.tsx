@@ -22,7 +22,7 @@ export default function AchievementManagement() {
     category: "Course",
     credential_url: "",
     certificate_url: "",
-      certificate_type: "image" as "image",
+    certificate_type: "image" as "image" | "pdf",
     tags: [] as string[],
     order: 0,
   });
@@ -381,11 +381,10 @@ export default function AchievementManagement() {
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
                     onDrop={handleDrop}
-                    className={`border-2 border-dashed rounded-xl p-6 text-center transition-colors ${
-                      isDragging
-                        ? 'border-emerald-500 bg-emerald-500/10'
-                        : 'border-zinc-700 bg-zinc-800/50'
-                    }`}
+                    className={`border-2 border-dashed rounded-xl p-6 text-center transition-colors ${isDragging
+                      ? 'border-emerald-500 bg-emerald-500/10'
+                      : 'border-zinc-700 bg-zinc-800/50'
+                      }`}
                   >
                     {achievementForm.certificate_url ? (
                       <div className="space-y-4">

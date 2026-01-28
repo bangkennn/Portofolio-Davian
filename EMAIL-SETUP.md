@@ -158,18 +158,6 @@ npm run dev
 
 ---
 
-## 🎯 **Kelebihan EmailJS vs Resend**
-
-| Fitur | EmailJS | Resend |
-|-------|---------|--------|
-| **Setup** | ✅ Mudah (5 menit) | ❌ Perlu domain verify |
-| **Free Tier** | 200 emails/bulan | 100 emails/hari |
-| **Domain Required** | ❌ Tidak | ✅ Ya (untuk production) |
-| **Backend** | ❌ Client-side only | ✅ Perlu API route |
-| **Email dari** | Gmail Anda | Custom domain/onboarding |
-
----
-
 ## 🚨 **Troubleshooting**
 
 ### **Error: "EmailJS Error: Missing parameters"**

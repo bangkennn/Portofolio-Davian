@@ -41,14 +41,14 @@ export default function Projects() {
     );
   }
   return (
-    <div className="min-h-screen py-20 max-w-7xl mx-auto px-4">
-      
+    <div className="min-h-screen py-10 md:py-20 max-w-7xl mx-auto px-4">
+
       {/* Header Section */}
-      <div className="mb-12">
-        <h2 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
+      <div className="mb-8 md:mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 flex items-center gap-3">
           <FaBriefcase className="text-emerald-500" /> Projects
         </h2>
-        <p className="text-zinc-500 text-l">
+        <p className="text-zinc-500 text-sm md:text-l">
           Pameran proyek pribadi dan open-source yang telah saya buat atau kontribusikan.
         </p>
       </div>
@@ -58,9 +58,8 @@ export default function Projects() {
         {projects.map((project) => (
           <div
             key={project.id}
-            className={`group bg-zinc-900/50 border border-zinc-800 rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-all duration-300 ${
-              project.featured ? 'md:col-span-2' : ''
-            }`}
+            className={`group bg-zinc-900/50 border border-zinc-800 rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-all duration-300 ${project.featured ? 'md:col-span-2' : ''
+              }`}
           >
             {/* Project Image/Mockup */}
             <div className="relative bg-zinc-950 h-64 overflow-hidden">
@@ -99,7 +98,7 @@ export default function Projects() {
                     <div
                       key={i}
                       className="relative"
-                      style={{ 
+                      style={{
                         transform: `rotate(${(i - 2) * 8}deg) translateY(${(i - 2) * 15}px)`,
                         zIndex: i === 2 ? 10 : 5 - i
                       }}

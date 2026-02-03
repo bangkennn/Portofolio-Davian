@@ -61,14 +61,14 @@ export default function Achievement() {
   };
 
   return (
-    <div className="min-h-screen py-20 max-w-7xl mx-auto px-4">
+    <div className="min-h-screen py-10 md:py-20 max-w-7xl mx-auto px-4">
 
       {/* Header Section */}
-      <div className="mb-8">
-        <h2 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
+      <div className="mb-6 md:mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 flex items-center gap-3">
           <FaTrophy className="text-emerald-500" /> Pencapaian
         </h2>
-        <p className="text-zinc-500 text-l">
+        <p className="text-zinc-500 text-sm md:text-l">
           Kumpulan sertifikat dan badge yang saya peroleh sepanjang perjalanan profesional dan akademik.
         </p>
       </div>

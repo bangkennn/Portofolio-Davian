@@ -158,19 +158,19 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen py-20 max-w-7xl mx-auto px-4">
+    <div className="min-h-screen py-10 md:py-20 max-w-7xl mx-auto px-4">
 
       {/* Header Section */}
-      <div className="mb-12">
-        <h2 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
+      <div className="mb-8 md:mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 flex items-center gap-3">
           <FaEnvelope className="text-emerald-500" /> Kontak
         </h2>
-        <p className="text-zinc-500 text-l">Mari kita terhubung</p>
+        <p className="text-zinc-500 text-sm md:text-l">Mari kita terhubung</p>
       </div>
 
       {/* Social Media Section */}
-      <div className="mb-16">
-        <h2 className="text-2xl font-bold text-white mb-6">
+      <div className="mb-12 md:mb-16">
+        <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">
           Temukan saya di media sosial
         </h2>
 
@@ -248,7 +248,7 @@ export default function Contact() {
 
       {/* Contact Form Section */}
       <div className="max-w-2xl">
-        <h2 className="text-2xl font-bold text-white mb-6">
+        <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">
           Atau kirim saya pesan
         </h2>
 

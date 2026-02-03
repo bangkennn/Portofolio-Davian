@@ -28,7 +28,7 @@ export default function ConditionalLayout({
     <AuthGuard>
       <div className="flex min-h-screen bg-[#0a0a0a]">
         <Sidebar />
-        <main className="flex-1 ml-64 p-8 md:p-12 w-full max-w-[calc(100vw-16rem)]">
+        <main className="flex-1 lg:ml-64 pt-20 lg:pt-0 p-4 md:p-8 lg:p-12 w-full">
           {children}
         </main>
       </div>

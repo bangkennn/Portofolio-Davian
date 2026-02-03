@@ -3,8 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaArrowRight, FaDownload } from "react-icons/fa";
+import { useTranslations } from "next-intl";
 
 const Hero = () => {
+  const t = useTranslations('Hero');
   const [description, setDescription] = useState(
     "Passionate and seasoned Software Engineer with a strong focus on frontend development. Proficient in TypeScript and well-versed in all aspects of web technologies. Proficient in UI UX design with responsive design creation and good experience"
   );
@@ -33,13 +35,13 @@ const Hero = () => {
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
         </span>
-        Available for Freelance & Fulltime
+        {t('status')}
       </div>
 
       {/* 2. Judul Utama */}
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.1] mb-6 md:mb-8">
-        Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Davian Putra Swardana</span> <br />
-        <span className="text-zinc-500">Fullstack Developer.</span>
+        {t('greeting')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Davian Putra Swardana</span> <br />
+        <span className="text-zinc-500">{t('role')}</span>
       </h1>
 
       {/* 3. Deskripsi */}
@@ -53,11 +55,11 @@ const Hero = () => {
           href="/projects"
           className="px-8 py-4 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-500 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-emerald-500/20"
         >
-          View Project <FaArrowRight />
+          {t('view_project')} <FaArrowRight />
         </Link>
 
         <button className="px-8 py-4 bg-zinc-900 text-zinc-300 font-bold rounded-full border border-zinc-800 hover:bg-zinc-800 hover:text-white transition-all duration-300 flex items-center gap-2">
-          Contact Me <FaDownload size={14} />
+          {t('contact_me')} <FaDownload size={14} />
         </button>
       </div>
 

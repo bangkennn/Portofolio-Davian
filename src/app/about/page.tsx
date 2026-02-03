@@ -3,8 +3,11 @@
 import { useState, useEffect } from "react";
 import { FaUser, FaBriefcase, FaGraduationCap, FaMapMarkerAlt, FaCalendarAlt, FaLaptop, FaBuilding } from "react-icons/fa";
 import { Career, Education } from "@/lib/supabase";
+import { useTranslations } from "next-intl";
 
 export default function About() {
+  const t = useTranslations('About');
+  const tCommon = useTranslations('Common');
   const [aboutDescription, setAboutDescription] = useState("");
   const [careerData, setCareerData] = useState<Career[]>([]);
   const [educationData, setEducationData] = useState<Education[]>([]);
@@ -41,7 +44,7 @@ export default function About() {
   if (isLoading) {
     return (
       <div className="min-h-screen py-20 max-w-7xl mx-auto px-4">
-        <div className="text-white text-center">Loading...</div>
+        <div className="text-white text-center">{tCommon('loading')}</div>
       </div>
     );
   }
@@ -62,9 +65,9 @@ export default function About() {
       <section className="mb-12 md:mb-20">
         <div className="mb-6 md:mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-            <FaUser className="text-emerald-500" /> Tentang
+            <FaUser className="text-emerald-500" /> {t('title')}
           </h2>
-          <p className="text-zinc-500 text-sm md:text-lg">Perkenalan singkat tentang siapa saya.</p>
+          <p className="text-zinc-500 text-sm md:text-lg">{t('subtitle')}</p>
         </div>
 
         <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 md:p-8 lg:p-10">
@@ -76,9 +79,9 @@ export default function About() {
       <section className="mb-12 md:mb-20">
         <div className="mb-6 md:mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-            <FaBriefcase className="text-emerald-500" /> Karier
+            <FaBriefcase className="text-emerald-500" /> {t('career_title')}
           </h2>
-          <p className="text-zinc-500 text-sm md:text-l">Perjalanan profesional saya.</p>
+          <p className="text-zinc-500 text-sm md:text-l">{t('career_subtitle')}</p>
         </div>
 
         <div className="space-y-6">
@@ -144,7 +147,7 @@ export default function About() {
 
                   {/* Button Tampilkan Tanggung Jawab */}
                   <button className="text-emerald-400 hover:text-emerald-300 transition-colors text-sm font-medium flex items-center gap-1">
-                    &gt; Tampilkan tanggung jawab
+                    &gt; {t('show_responsibilities')}
                   </button>
                 </div>
               </div>
@@ -157,9 +160,9 @@ export default function About() {
       <section>
         <div className="mb-6 md:mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-            <FaGraduationCap className="text-emerald-500" /> Pendidikan
+            <FaGraduationCap className="text-emerald-500" /> {t('education_title')}
           </h2>
-          <p className="text-zinc-500 text-sm md:text-l">Perjalanan pendidikan saya.</p>
+          <p className="text-zinc-500 text-sm md:text-l">{t('education_subtitle')}</p>
         </div>
 
         <div className="space-y-6">

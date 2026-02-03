@@ -1,0 +1,95 @@
+{
+    "Navigation": {
+        "home": "Beranda",
+        "about": "Tentang",
+        "projects": "Proyek",
+        "achievement": "Pencapaian",
+        "contact": "Kontak",
+        "admin": "Admin Login",
+        "logout": "Keluar",
+        "socials": "Sosial Media",
+        "login_message": "Silakan logout untuk mengakses menu"
+    },
+    "Hero": {
+        "status": "Tersedia untuk Freelance & Fulltime",
+        "greeting": "Halo, Saya",
+        "role": "Fullstack Developer.",
+        "view_project": "Lihat Proyek",
+        "contact_me": "Hubungi Saya"
+    },
+    "Skills": {
+        "title": "Keahlian Saya",
+        "subtitle": "Teknologi yang saya gunakan."
+    },
+    "Bento": {
+        "featured_sections": "Bagian Unggulan",
+        "explore_text": "Jelajahi semua yang telah saya buat, kontribusikan, dan capai.",
+        "projects_showcase": "Pameran Proyek",
+        "projects_desc": "Pilihan aplikasi nyata yang dibangun untuk memecahkan masalah nyata.",
+        "about_me": "Tentang Saya",
+        "about_desc": "Siapa saya dan apa yang saya lakukan.",
+        "skills_tools": "Keahlian & Alat",
+        "skills_desc": "Mencakup teknologi mobile, web, AI, dan UI/UX.",
+        "achievements": "Pencapaian",
+        "achievements_desc": "Tonggak sejarah dari program, proyek, dan komunitas.",
+        "chat_room": "Ruang Obrolan",
+        "chat_desc": "Ruang terbuka untuk berbicara dan berkolaborasi.",
+        "services": "Layanan",
+        "services_desc": "Solusi ujung-ke-ujung dalam web, mobile, AI, dan desain."
+    },
+    "About": {
+        "title": "Tentang",
+        "subtitle": "Perkenalan singkat tentang siapa saya.",
+        "career_title": "Karier",
+        "career_subtitle": "Perjalanan profesional saya.",
+        "education_title": "Pendidikan",
+        "education_subtitle": "Perjalanan pendidikan saya.",
+        "show_responsibilities": "Tampilkan tanggung jawab",
+        "hide_responsibilities": "Sembunyikan tanggung jawab",
+        "present": "Sekarang"
+    },
+    "Projects": {
+        "title": "Proyek",
+        "subtitle": "Pameran proyek pribadi dan open-source yang telah saya buat atau kontribusikan.",
+        "featured": "Unggulan",
+        "view_project": "Lihat Proyek"
+    },
+    "Contact": {
+        "title": "Kontak",
+        "subtitle": "Mari kita terhubung",
+        "find_me": "Temukan saya di media sosial",
+        "or_message": "Atau kirim saya pesan",
+        "name_label": "Nama",
+        "name_placeholder": "Nama Anda",
+        "email_label": "Email",
+        "email_placeholder": "email.anda@contoh.com",
+        "message_label": "Pesan",
+        "message_placeholder": "Pesan Anda di sini...",
+        "send_button": "Kirim Email",
+        "sending": "Mengirim...",
+        "success": "Pesan berhasil dikirim! Terima kasih telah menghubungi saya. 🎉",
+        "error": "Gagal mengirim pesan. Silakan coba lagi nanti."
+    },
+    "Achievement": {
+        "title": "Pencapaian",
+        "subtitle": "Kumpulan sertifikat dan badge yang saya peroleh sepanjang perjalanan profesional dan akademik.",
+        "search_placeholder": "Cari...",
+        "filter_all": "Semua Pencapaian",
+        "filter_label": "Filter pencapaian...",
+        "total": "Total:",
+        "view_credential": "Lihat Kredensial",
+        "open_credential": "Buka Kredensial",
+        "issuer": "Penerbit:",
+        "issued_on": "Diterbitkan pada:",
+        "preview": "Pratinjau Sertifikat",
+        "empty_state": "Tidak ada pencapaian ditemukan",
+        "empty_hint": "Coba sesuaikan kriteria pencarian atau filter Anda"
+    },
+    "Common": {
+        "loading": "Memuat..."
+    },
+    "Metadata": {
+        "title": "Portofolio | Davian",
+        "description": "Portofolio pribadi Davian, seorang Fullstack Developer."
+    }
+}

@@ -1,0 +1,95 @@
+{
+    "Navigation": {
+        "home": "Home",
+        "about": "About",
+        "projects": "Projects",
+        "achievement": "Achievement",
+        "contact": "Contact",
+        "admin": "Admin Login",
+        "logout": "Logout",
+        "socials": "Socials",
+        "login_message": "Please logout to access menu"
+    },
+    "Hero": {
+        "status": "Available for Freelance & Fulltime",
+        "greeting": "Hi, I'm",
+        "role": "Fullstack Developer.",
+        "view_project": "View Project",
+        "contact_me": "Contact Me"
+    },
+    "Skills": {
+        "title": "My Skills",
+        "subtitle": "Technologies I use."
+    },
+    "Bento": {
+        "featured_sections": "Featured Sections",
+        "explore_text": "Explore everything I've crafted, contributed, and accomplished.",
+        "projects_showcase": "Projects Showcase",
+        "projects_desc": "A selection of real apps built to solve real problems.",
+        "about_me": "About Me",
+        "about_desc": "Who I am and what I do.",
+        "skills_tools": "Skills & Tools",
+        "skills_desc": "Covering mobile, web, AI, and UI/UX technologies.",
+        "achievements": "Achievements",
+        "achievements_desc": "Milestones from programs, projects, and communities.",
+        "chat_room": "Chat Room",
+        "chat_desc": "Open space to talk and collaborate.",
+        "services": "Services",
+        "services_desc": "End-to-end solutions in web, mobile, AI, and design."
+    },
+    "About": {
+        "title": "About",
+        "subtitle": "Brief introduction about who I am.",
+        "career_title": "Career",
+        "career_subtitle": "My professional journey.",
+        "education_title": "Education",
+        "education_subtitle": "My educational journey.",
+        "show_responsibilities": "Show responsibilities",
+        "hide_responsibilities": "Hide responsibilities",
+        "present": "Present"
+    },
+    "Projects": {
+        "title": "Projects",
+        "subtitle": "Showcase of personal and open-source projects I've built or contributed to.",
+        "featured": "Featured",
+        "view_project": "View Project"
+    },
+    "Contact": {
+        "title": "Contact",
+        "subtitle": "Let's connect",
+        "find_me": "Find me on social media",
+        "or_message": "Or send me a message",
+        "name_label": "Name",
+        "name_placeholder": "Your name",
+        "email_label": "Email",
+        "email_placeholder": "your.email@example.com",
+        "message_label": "Message",
+        "message_placeholder": "Your message here...",
+        "send_button": "Send Email",
+        "sending": "Sending...",
+        "success": "Message sent successfully! Thank you for contacting me. 🎉",
+        "error": "Failed to send message. Please try again later."
+    },
+    "Achievement": {
+        "title": "Achievements",
+        "subtitle": "Collection of certificates and badges I've earned throughout my professional and academic journey.",
+        "search_placeholder": "Search...",
+        "filter_all": "All Achievements",
+        "filter_label": "Filter achievements...",
+        "total": "Total:",
+        "view_credential": "View Credential",
+        "open_credential": "Open Credential",
+        "issuer": "Issuer:",
+        "issued_on": "Issued on:",
+        "preview": "Certificate Preview",
+        "empty_state": "No achievements found",
+        "empty_hint": "Try adjusting your search or filter criteria"
+    },
+    "Common": {
+        "loading": "Loading..."
+    },
+    "Metadata": {
+        "title": "Portfolio | Davian",
+        "description": "Personal portfolio of Davian, a Fullstack Developer."
+    }
+}

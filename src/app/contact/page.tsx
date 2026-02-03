@@ -6,8 +6,11 @@ import * as FaIcons from "react-icons/fa";
 import * as SiIcons from "react-icons/si";
 import { ContactLink } from "@/lib/supabase";
 import emailjs from '@emailjs/browser';
+import { useTranslations } from "next-intl";
 
 export default function Contact() {
+  const t = useTranslations('Contact');
+  const tCommon = useTranslations('Common');
   const [contactLinks, setContactLinks] = useState<ContactLink[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState({
@@ -132,7 +135,7 @@ export default function Contact() {
 
       setSendStatus({
         type: 'success',
-        message: 'Pesan berhasil dikirim! Terima kasih telah menghubungi saya. 🎉'
+        message: t('success')
       });
       // Reset form
       setFormData({ name: "", email: "", message: "" });
@@ -141,7 +144,7 @@ export default function Contact() {
       console.error('EmailJS Error:', error);
       setSendStatus({
         type: 'error',
-        message: 'Gagal mengirim pesan. Silakan coba lagi nanti.'
+        message: t('error')
       });
     } finally {
       setIsSending(false);
@@ -163,20 +166,20 @@ export default function Contact() {
       {/* Header Section */}
       <div className="mb-8 md:mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <FaEnvelope className="text-emerald-500" /> Kontak
+          <FaEnvelope className="text-emerald-500" /> {t('title')}
         </h2>
-        <p className="text-zinc-500 text-sm md:text-l">Mari kita terhubung</p>
+        <p className="text-zinc-500 text-sm md:text-l">{t('subtitle')}</p>
       </div>
 
       {/* Social Media Section */}
       <div className="mb-12 md:mb-16">
         <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">
-          Temukan saya di media sosial
+          {t('find_me')}
         </h2>
 
         {isLoading ? (
           <div className="text-center py-20">
-            <div className="text-zinc-500">Loading...</div>
+            <div className="text-zinc-500">{tCommon('loading')}</div>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -249,14 +252,14 @@ export default function Contact() {
       {/* Contact Form Section */}
       <div className="max-w-2xl">
         <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">
-          Atau kirim saya pesan
+          {t('or_message')}
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Name Input */}
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-zinc-400 mb-2">
-              Name
+              {t('name_label')}
             </label>
             <input
               type="text"
@@ -266,14 +269,14 @@ export default function Contact() {
               onChange={handleChange}
               required
               className="w-full px-4 py-3 bg-zinc-900/50 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
-              placeholder="Your name"
+              placeholder={t('name_placeholder')}
             />
           </div>
 
           {/* Email Input */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-zinc-400 mb-2">
-              Email
+              {t('email_label')}
             </label>
             <input
               type="email"
@@ -283,14 +286,14 @@ export default function Contact() {
               onChange={handleChange}
               required
               className="w-full px-4 py-3 bg-zinc-900/50 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
-              placeholder="your.email@example.com"
+              placeholder={t('email_placeholder')}
             />
           </div>
 
           {/* Message Textarea */}
           <div>
             <label htmlFor="message" className="block text-sm font-medium text-zinc-400 mb-2">
-              Message
+              {t('message_label')}
             </label>
             <textarea
               id="message"
@@ -300,7 +303,7 @@ export default function Contact() {
               required
               rows={6}
               className="w-full px-4 py-3 bg-zinc-900/50 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500/50 transition-colors resize-none"
-              placeholder="Your message here..."
+              placeholder={t('message_placeholder')}
             />
           </div>
 
@@ -329,11 +332,11 @@ export default function Contact() {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Mengirim...
+                {t('sending')}
               </>
             ) : (
               <>
-                Send Email
+                {t('send_button')}
                 <FaArrowRight />
               </>
             )}

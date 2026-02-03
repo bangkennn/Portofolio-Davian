@@ -1,11 +1,12 @@
 "use client";
 
 import Marquee from "react-fast-marquee";
-import { 
-  SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, 
-  SiNodedotjs, SiPostgresql, SiSupabase, SiFramer, 
-  SiGit, SiMongodb, SiDocker, SiPython 
+import {
+  SiReact, SiNextdotjs, SiTypescript, SiTailwindcss,
+  SiNodedotjs, SiPostgresql, SiSupabase, SiFramer,
+  SiGit, SiMongodb, SiDocker, SiPython
 } from "react-icons/si";
+import { useTranslations } from "next-intl";
 
 // DATA
 const skillsData = [
@@ -21,31 +22,33 @@ const skillsData = [
   { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
   { name: "Docker", icon: <SiDocker className="text-[#2496ED]" /> },
   { name: "Python", icon: <SiPython className="text-[#3776AB]" /> },
-]; 
+];
 
 const Skills = () => {
+  const t = useTranslations('Skills');
+
   return (
     <section className="py-10 overflow-hidden">
-      
+
       {/* UBAH DI SINI: max-w-4xl JADI max-w-7xl */}
       <div className="max-w-7xl mx-auto px-4 mb-8">
         <h2 className="text-4xl font-bold text-white mb-2 flex items-center gap-2">
-           <span className="text-emerald-500">My</span> Skills
+          <span className="text-emerald-500">My</span> {t('title').replace('My ', '')}
         </h2>
-        <p className="text-zinc-500 text-l">Teknologi yang saya gunakan.</p>
+        <p className="text-zinc-500 text-l">{t('subtitle')}</p>
       </div>
 
       {/* Container Slider (Biarkan full width supaya keren) */}
       <div className="relative w-full border-y border-zinc-800 bg-zinc-900/30 py-8 overflow-hidden">
-        
+
         {/* Efek Gradasi Pudar */}
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none"></div>
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none"></div>
 
         {/* Track Animasi dengan Marquee */}
-        <Marquee 
-          gradient={false} 
-          speed={50} 
+        <Marquee
+          gradient={false}
+          speed={50}
           direction="left"
           pauseOnHover={true}
         >

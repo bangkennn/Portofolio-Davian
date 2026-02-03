@@ -3,17 +3,25 @@
 import { useState, useMemo, useEffect } from "react";
 import { FaTrophy, FaSearch, FaChevronDown, FaArrowRight, FaTimes } from "react-icons/fa";
 import { Achievement as AchievementType } from "@/lib/supabase";
+import { useTranslations } from "next-intl";
 
-// Filter options
-const filterOptions = [
-  { value: "all", label: "All Achievements" },
-  { value: "Course", label: "Course" },
+// Filter options - keys for translation
+const filterKeys = [
+  { value: "all", labelKey: "filter_all" },
+  { value: "Course", label: "Course" }, // Keep literal if not translated or use keys if I want to translate them too. 
+  // Previous code had literals. I will keep literals for categories if they are not in JSON.
+  // Actually, categories "Course", "Competition", etc. might need translation but they are database values?
+  // If they are static filters, I can translate labels.
+  // JSON doesn't have keys for "Course", "Competition". I'll keep them as is or just translate "All Achievements".
   { value: "Competition", label: "Competition" },
   { value: "Program", label: "Program" },
   { value: "Certification", label: "Certification" },
 ];
 
 export default function Achievement() {
+  const t = useTranslations('Achievement');
+  const tCommon = useTranslations('Common');
+
   const [achievements, setAchievements] = useState<AchievementType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -60,16 +68,21 @@ export default function Achievement() {
     setSelectedCertificate(null);
   };
 
+  const getFilterLabel = (option: any) => {
+    if (option.value === 'all') return t('filter_all');
+    return option.label;
+  };
+
   return (
     <div className="min-h-screen py-10 md:py-20 max-w-7xl mx-auto px-4">
 
       {/* Header Section */}
       <div className="mb-6 md:mb-8">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <FaTrophy className="text-emerald-500" /> Pencapaian
+          <FaTrophy className="text-emerald-500" /> {t('title')}
         </h2>
         <p className="text-zinc-500 text-sm md:text-l">
-          Kumpulan sertifikat dan badge yang saya peroleh sepanjang perjalanan profesional dan akademik.
+          {t('subtitle')}
         </p>
       </div>
 
@@ -80,7 +93,7 @@ export default function Achievement() {
           <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-zinc-500" />
           <input
             type="text"
-            placeholder="Search..."
+            placeholder={t('search_placeholder')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-12 pr-4 py-3 bg-zinc-900/50 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
@@ -94,7 +107,7 @@ export default function Achievement() {
             className="flex items-center gap-3 px-4 py-3 bg-zinc-900/50 border border-zinc-800 rounded-xl text-white hover:border-emerald-500/50 transition-colors min-w-[200px] justify-between"
           >
             <span className="text-sm">
-              {filterOptions.find((opt) => opt.value === selectedFilter)?.label || "Filter achievements..."}
+              {selectedFilter === 'all' ? t('filter_all') : filterKeys.find((opt) => opt.value === selectedFilter)?.label || t('filter_label')}
             </span>
             <FaChevronDown
               className={`text-xs text-zinc-500 transition-transform ${isFilterOpen ? "rotate-180" : ""
@@ -110,7 +123,7 @@ export default function Achievement() {
                 onClick={() => setIsFilterOpen(false)}
               ></div>
               <div className="absolute top-full mt-2 w-full bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl overflow-hidden z-20">
-                {filterOptions.map((option) => (
+                {filterKeys.map((option) => (
                   <button
                     key={option.value}
                     onClick={() => {
@@ -122,7 +135,7 @@ export default function Achievement() {
                       : "text-zinc-400 hover:bg-zinc-800 hover:text-white"
                       }`}
                   >
-                    {option.label}
+                    {option.value === 'all' ? t('filter_all') : option.label}
                   </button>
                 ))}
               </div>
@@ -134,7 +147,7 @@ export default function Achievement() {
       {/* Total Count */}
       <div className="mb-6">
         <p className="text-zinc-400 text-sm">
-          Total: <span className="text-emerald-400 font-semibold">{filteredAchievements.length}</span>
+          {t('total')} <span className="text-emerald-400 font-semibold">{filteredAchievements.length}</span>
         </p>
       </div>
 
@@ -160,7 +173,7 @@ export default function Achievement() {
                       <div className="w-24 h-24 mx-auto mb-4 bg-zinc-700 rounded-lg flex items-center justify-center">
                         <FaTrophy className="text-4xl text-zinc-600" />
                       </div>
-                      <p className="text-zinc-600 text-xs">Certificate Preview</p>
+                      <p className="text-zinc-600 text-xs">{t('preview')}</p>
                     </div>
                   </div>
                 </div>
@@ -172,7 +185,7 @@ export default function Achievement() {
                   onClick={() => handleViewCredential(achievement)}
                   className="px-4 py-2 bg-emerald-500 text-white rounded-lg text-sm font-medium hover:bg-emerald-600 transition-colors flex items-center gap-2"
                 >
-                  Lihat Kredensial <FaArrowRight className="text-xs" />
+                  {t('view_credential')} <FaArrowRight className="text-xs" />
                 </button>
               </div>
             </div>
@@ -184,10 +197,10 @@ export default function Achievement() {
               </h3>
               <div className="space-y-1 mb-4">
                 <p className="text-sm text-zinc-400">
-                  <span className="text-zinc-500">Issuer:</span> {achievement.issuer}
+                  <span className="text-zinc-500">{t('issuer')}</span> {achievement.issuer}
                 </p>
                 <p className="text-sm text-zinc-400">
-                  <span className="text-zinc-500">Issued on:</span> {achievement.issued_date}
+                  <span className="text-zinc-500">{t('issued_on')}</span> {achievement.issued_date}
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -212,9 +225,9 @@ export default function Achievement() {
       {filteredAchievements.length === 0 && !isLoading && (
         <div className="text-center py-20">
           <FaTrophy className="text-6xl text-zinc-800 mx-auto mb-4" />
-          <p className="text-zinc-500 text-lg">No achievements found</p>
+          <p className="text-zinc-500 text-lg">{t('empty_state')}</p>
           <p className="text-zinc-600 text-sm mt-2">
-            Try adjusting your search or filter criteria
+            {t('empty_hint')}
           </p>
         </div>
       )}
@@ -222,7 +235,7 @@ export default function Achievement() {
       {/* Loading State */}
       {isLoading && (
         <div className="text-center py-20">
-          <div className="text-zinc-500">Loading...</div>
+          <div className="text-zinc-500">{tCommon('loading')}</div>
         </div>
       )}
 
@@ -279,7 +292,7 @@ export default function Achievement() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-lg hover:bg-emerald-500/20 transition-colors text-sm"
                 >
-                  Buka Kredensial <FaArrowRight className="text-xs" />
+                  {t('open_credential')} <FaArrowRight className="text-xs" />
                 </a>
               )}
             </div>

@@ -5,8 +5,11 @@ import Link from "next/link";
 import { FaBriefcase, FaArrowRight } from "react-icons/fa";
 import * as Icons from "react-icons/si";
 import { Project, TechStack } from "@/lib/supabase";
+import { useTranslations } from "next-intl";
 
 export default function Projects() {
+  const t = useTranslations('Projects');
+  const tCommon = useTranslations('Common');
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,7 +39,7 @@ export default function Projects() {
   if (isLoading) {
     return (
       <div className="min-h-screen py-20 max-w-7xl mx-auto px-4">
-        <div className="text-white text-center">Loading...</div>
+        <div className="text-white text-center">{tCommon('loading')}</div>
       </div>
     );
   }
@@ -46,10 +49,10 @@ export default function Projects() {
       {/* Header Section */}
       <div className="mb-8 md:mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <FaBriefcase className="text-emerald-500" /> Projects
+          <FaBriefcase className="text-emerald-500" /> {t('title')}
         </h2>
         <p className="text-zinc-500 text-sm md:text-l">
-          Pameran proyek pribadi dan open-source yang telah saya buat atau kontribusikan.
+          {t('subtitle')}
         </p>
       </div>
 
@@ -124,7 +127,7 @@ export default function Projects() {
               {project.featured && (
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 rounded-full text-xs font-medium">
-                    Featured
+                    {t('featured')}
                   </span>
                 </div>
               )}
@@ -158,7 +161,7 @@ export default function Projects() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600/10 border border-emerald-500/20 text-emerald-400 rounded-full hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all duration-300 group/btn"
                 >
-                  <span className="text-sm font-medium">Lihat Proyek</span>
+                  <span className="text-sm font-medium">{t('view_project')}</span>
                   <FaArrowRight className="text-xs group-hover/btn:translate-x-1 transition-transform" />
                 </a>
               ) : (
@@ -166,7 +169,7 @@ export default function Projects() {
                   href={`/projects/${project.slug}`}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600/10 border border-emerald-500/20 text-emerald-400 rounded-full hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all duration-300 group/btn"
                 >
-                  <span className="text-sm font-medium">Lihat Proyek</span>
+                  <span className="text-sm font-medium">{t('view_project')}</span>
                   <FaArrowRight className="text-xs group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               )}

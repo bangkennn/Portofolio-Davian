@@ -3,9 +3,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useTransform, PanInfo } from "framer-motion";
 import Marquee from "react-fast-marquee";
-import { FaLaptopCode, FaUser, FaTools, FaTrophy, FaComments, FaLayerGroup, FaFileAlt, FaChartLine, FaMedal, FaAward } from "react-icons/fa";
+import { FaLaptopCode, FaUser, FaTrophy, FaComments, FaLayerGroup, FaFileAlt, FaChartLine, FaMedal, FaAward } from "react-icons/fa";
 // HAPUS SiVuechain & SiLaravel yang bikin error
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer, SiNodedotjs, SiSupabase, SiPostgresql, SiGit, SiDocker, SiFigma } from "react-icons/si";
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer, SiNodedotjs, SiSupabase, SiPostgresql, SiDocker, SiFigma } from "react-icons/si";
+import { useTranslations } from "next-intl";
 
 // Default images fallback
 const defaultStackImages = [
@@ -36,6 +37,7 @@ const bottomSkills = [
 // KOMPONEN UTAMA: BENTO GRID
 // ============================================================================
 const BentoGrid = () => {
+  const t = useTranslations('Bento');
   const [stackImages, setStackImages] = useState<string[]>(defaultStackImages);
   const [projectImages, setProjectImages] = useState<string[]>([]);
 
@@ -121,9 +123,9 @@ const BentoGrid = () => {
       {/* Header Section */}
       <div className="mb-8 md:mb-14">
         <h2 className="text-3xl md:text-4xl font-bold text-white flex items-center gap-3">
-          <FaLayerGroup className="text-emerald-500" /> Featured Sections
+          <FaLayerGroup className="text-emerald-500" /> {t('featured_sections')}
         </h2>
-        <p className="text-zinc-500 mt-2 text-sm md:text-l">Explore everything I've crafted, contributed, and accomplished.</p>
+        <p className="text-zinc-500 mt-2 text-sm md:text-l">{t('explore_text')}</p>
       </div>
 
       {/* GRID UTAMA - Responsive: 1 col mobile, 2 col tablet, 4 col desktop */}
@@ -136,8 +138,8 @@ const BentoGrid = () => {
               <div className="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center mb-4 border border-zinc-700 text-emerald-400 text-xl">
                 <FaLaptopCode />
               </div>
-              <h3 className="text-2xl font-bold text-white">Projects Showcase</h3>
-              <p className="text-zinc-400 mt-2 max-w-[250px]">A selection of real apps built to solve real problems.</p>
+              <h3 className="text-2xl font-bold text-white">{t('projects_showcase')}</h3>
+              <p className="text-zinc-400 mt-2 max-w-[250px]">{t('projects_desc')}</p>
             </div>
 
             {/* Display Project Images or Mockup */}
@@ -147,8 +149,8 @@ const BentoGrid = () => {
                   <div
                     key={index}
                     className={`w-56 h-28 rounded-lg shadow-2xl overflow-hidden border ${index === 0 ? 'translate-x-10 opacity-60 border-zinc-700/50' :
-                        index === 1 ? 'translate-x-5 opacity-80 border-zinc-700/50' :
-                          'border-emerald-500/20'
+                      index === 1 ? 'translate-x-5 opacity-80 border-zinc-700/50' :
+                        'border-emerald-500/20'
                       }`}
                   >
                     <img
@@ -175,8 +177,8 @@ const BentoGrid = () => {
             <div className="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center mb-3 mx-auto border border-zinc-700 text-blue-400 text-xl">
               <FaUser />
             </div>
-            <h3 className="text-lg font-bold text-white">About Me</h3>
-            <p className="text-xs text-zinc-500 mt-1">Who I am and what I do.</p>
+            <h3 className="text-lg font-bold text-white">{t('about_me')}</h3>
+            <p className="text-xs text-zinc-500 mt-1">{t('about_desc')}</p>
           </div>
 
           <div className="relative z-20 w-full flex-1 flex items-center justify-center mt-10">
@@ -215,8 +217,8 @@ const BentoGrid = () => {
                 <div className="bg-orange-400 rounded-sm"></div>
               </div>
             </div>
-            <h3 className="text-lg font-bold text-white">Skills & Tools</h3>
-            <p className="text-xs text-zinc-500 mt-1 mb-9">Covering mobile, web, AI, and UI/UX technologies.</p>
+            <h3 className="text-lg font-bold text-white">{t('skills_tools')}</h3>
+            <p className="text-xs text-zinc-500 mt-1 mb-9">{t('skills_desc')}</p>
           </div>
 
           {/* Marquee area - no padding, touches edges */}
@@ -248,8 +250,8 @@ const BentoGrid = () => {
               <FaFileAlt className="text-yellow-400" />
               <FaChartLine className="absolute -bottom-0.5 -right-0.5 text-yellow-500 text-xs" />
             </div>
-            <h3 className="font-bold text-white text-lg">Achievements</h3>
-            <p className="text-xs text-zinc-500 mt-1">Milestones from programs, projects, and communities.</p>
+            <h3 className="font-bold text-white text-lg">{t('achievements')}</h3>
+            <p className="text-xs text-zinc-500 mt-1">{t('achievements_desc')}</p>
           </div>
 
           {/* Visual: Medals/Trophies illustration */}
@@ -334,8 +336,8 @@ const BentoGrid = () => {
               <div className="w-10 h-10 bg-zinc-800 rounded-xl flex items-center justify-center mb-3 mx-auto border border-zinc-700 text-emerald-500">
                 <FaComments className="text-emerald-500" />
               </div>
-              <h3 className="font-bold text-white text-lg">Chat Room</h3>
-              <p className="text-xs text-zinc-500 mt-1">Open space to talk and collaborate.</p>
+              <h3 className="font-bold text-white text-lg">{t('chat_room')}</h3>
+              <p className="text-xs text-zinc-500 mt-1">{t('chat_desc')}</p>
             </div>
 
             {/* Chat bubbles - centered */}
@@ -366,8 +368,8 @@ const BentoGrid = () => {
             <div className="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center mb-4 border border-zinc-700 text-purple-400 text-xl">
               <FaLayerGroup />
             </div>
-            <h3 className="font-bold text-white text-2xl">Services</h3>
-            <p className="text-sm text-zinc-400 mt-2 max-w-[200px]">End-to-end solutions in web, mobile, AI, and design.</p>
+            <h3 className="font-bold text-white text-2xl">{t('services')}</h3>
+            <p className="text-sm text-zinc-400 mt-2 max-w-[200px]">{t('services_desc')}</p>
           </div>
 
           {/* Blurred background text - stacked vertically on right */}

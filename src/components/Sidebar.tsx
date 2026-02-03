@@ -6,10 +6,13 @@ import Link from 'next/link';
 import { FaHome, FaUser, FaBriefcase, FaEnvelope, FaGithub, FaLinkedin, FaTrophy, FaLock, FaSignOutAlt, FaBars, FaTimes } from 'react-icons/fa';
 import { auth } from '@/lib/auth';
 import { SidebarProfile } from '@/lib/supabase';
+import { useTranslations } from 'next-intl';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Sidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const t = useTranslations('Navigation');
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -115,7 +118,7 @@ const Sidebar = () => {
         </div>
 
         {/* Menu Navigasi */}
-        <nav className="flex-1 w-full">
+        <nav className="flex-1 w-full relative z-10">
           <ul className="space-y-1.5">
             {!isMounted ? (
               // Placeholder saat masih loading (untuk menghindari hydration mismatch)
@@ -129,16 +132,16 @@ const Sidebar = () => {
             ) : isAuthenticated ? (
               <li className="px-4 py-2.5">
                 <div className="flex items-center gap-3 text-zinc-500 text-sm">
-                  <span>Silakan logout untuk mengakses menu</span>
+                  <span>{t('login_message')}</span>
                 </div>
               </li>
             ) : (
               <>
-                <NavItem href="/" icon={<FaHome />} label="Home" />
-                <NavItem href="/about" icon={<FaUser />} label="About" />
-                <NavItem href="/projects" icon={<FaBriefcase />} label="Projects" />
-                <NavItem href="/achievement" icon={<FaTrophy />} label="Achievement" />
-                <NavItem href="/contact" icon={<FaEnvelope />} label="Contact" />
+                <NavItem href="/" icon={<FaHome />} label={t('home')} />
+                <NavItem href="/about" icon={<FaUser />} label={t('about')} />
+                <NavItem href="/projects" icon={<FaBriefcase />} label={t('projects')} />
+                <NavItem href="/achievement" icon={<FaTrophy />} label={t('achievement')} />
+                <NavItem href="/contact" icon={<FaEnvelope />} label={t('contact')} />
               </>
             )}
           </ul>
@@ -146,6 +149,12 @@ const Sidebar = () => {
 
         {/* Sosial Media & Logout */}
         <div className="mt-auto space-y-4">
+
+          {/* Language Switcher (Mobile Only) */}
+          <div className="lg:hidden">
+            <LanguageSwitcher />
+          </div>
+
           {/* Admin Login / Logout Button */}
           {!isMounted ? (
             // Placeholder saat masih loading
@@ -162,7 +171,7 @@ const Sidebar = () => {
               className="w-full flex items-center gap-3 px-4 py-2.5 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 hover:bg-red-500/20 hover:border-red-500/40 transition-all duration-300 group"
             >
               <FaSignOutAlt className="text-sm group-hover:scale-110 transition-transform" />
-              <span className="font-medium text-sm">Logout</span>
+              <span className="font-medium text-sm">{t('logout')}</span>
             </button>
           ) : (
             <Link
@@ -170,12 +179,12 @@ const Sidebar = () => {
               className="flex items-center gap-3 px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all duration-300 group"
             >
               <FaLock className="text-sm group-hover:scale-110 transition-transform" />
-              <span className="font-medium text-sm">Admin Login</span>
+              <span className="font-medium text-sm">{t('admin')}</span>
             </Link>
           )}
 
           <div>
-            <p className="text-xs text-zinc-600 mb-3 text-center uppercase tracking-widest font-semibold">Socials</p>
+            <p className="text-xs text-zinc-600 mb-3 text-center uppercase tracking-widest font-semibold">{t('socials')}</p>
             <div className="flex gap-5 text-xl text-zinc-500 justify-center">
               <a
                 href="https://github.com/bangkennn"
